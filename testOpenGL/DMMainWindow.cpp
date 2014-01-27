@@ -252,37 +252,24 @@ void DMMainWindow::CreateContext()
 
 
 
-void DMMainWindow::InitGL()
-
-{
+void DMMainWindow::InitGL() {
 
 	// Enable 2D texturing
-
 	glEnable(GL_TEXTURE_2D);
 
 	// Choose a smooth shading model
-
 	glShadeModel(GL_SMOOTH);
 
 	// Set the clear color to black
-
 	glClearColor(0.0, 0.0, 0.0, 0.0);
 
-
-
 	// Enable the alpha test. This is needed 
-
 	// to be able to have images with transparent 
-
 	// parts.
-
 	glEnable(GL_ALPHA_TEST);
-
 	glAlphaFunc(GL_GREATER, 0.0f);
 
 }
-
-
 
 void DMMainWindow::OnSize(GLsizei width, GLsizei height) {
 
@@ -308,32 +295,44 @@ void DMMainWindow::Draw() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	// Here goes the drawing code
-
 	glBegin(GL_QUADS);
 
-	glColor3f(1.0, 0.0, 0.0);		glVertex3i(50, 200, 0);
-
+	glColor3f(1.0, 1.0, 0.0);		glVertex3i(50, 200, 0);
 	glColor3f(0.0, 1.0, 0.0);		glVertex3i(250, 200, 0);
-
 	glColor3f(0.0, 0.0, 1.0);		glVertex3i(250, 350, 0);
-
 	glColor3f(1.0, 1.0, 1.0);		glVertex3i(50, 350, 0);
 
 	glEnd();
 
-
-
+	// creates a triangle
 	glBegin(GL_TRIANGLES);
 
 	glColor3f(1.0, 0.0, 0.0);  glVertex3i(400, 350, 0);
-
 	glColor3f(0.0, 1.0, 0.0);  glVertex3i(500, 200, 0);
-
 	glColor3f(0.0, 0.0, 1.0);  glVertex3i(600, 350, 0);
 
 	glEnd();
 
+	// creates a grid
+	for (int i = 0; i < 20; i++) {
+	
+		// vertical lines
+		glBegin(GL_LINE);
 
+		glColor3f(1.0, 0.0, 0.0);  glVertex3i(50 * i, 0, 0);
+		glColor3f(0.0, 1.0, 0.0);  glVertex3i(50 * i, 600, 0);
+	
+		glEnd();
+
+		// horizontal lines
+		glBegin(GL_LINE);
+
+		glColor3f(0.0, 1.0, 0.0);  glVertex3i(0, 50 * i, 0);
+		glColor3f(1.0, 0.0, 0.0);  glVertex3i(1000, 50 * i, 0);
+
+		glEnd();
+
+	}
 
 	SwapBuffers(m_hDeviceContext);
 
