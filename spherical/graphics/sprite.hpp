@@ -14,6 +14,5 @@ namespace graphics {
 	};
 }}
 
-
 #endif
 
