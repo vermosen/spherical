@@ -1,6 +1,5 @@
-#include "application.hpp" 
-#include "exception.hpp"
-
+#include <application/application.hpp> 
+#include <application/exception.hpp>
 
 int WINAPI WinMain(HINSTANCE Instance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, INT) 
 {

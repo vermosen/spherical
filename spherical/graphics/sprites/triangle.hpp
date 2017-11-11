@@ -1,17 +1,17 @@
 #pragma once
-#ifndef GRAPHICS_SPRITES_SQUARE_HPP
-#define GRAPHICS_SPRITES_SQUARE_HPP
+#ifndef GRAPHICS_SPRITES_TRIANGLE_HPP
+#define GRAPHICS_SPRITES_TRIANGLE_HPP
 
 #include <graphics/sprite.hpp>
 
 namespace spherical {
 namespace graphics {
 
-	class square : public sprite
+	class triangle : public sprite
 	{
 	public:
-		square();
-		virtual ~square();
+		triangle();
+		virtual ~triangle();
 		virtual void draw_impl() override;
 	};
 }}

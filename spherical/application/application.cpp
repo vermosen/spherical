@@ -1,5 +1,5 @@
-#include "application.hpp"
-#include "mainWindow.hpp"
+#include <application/application.hpp>
+#include <application/window.hpp>
 #include <string>
 
 // Disable the warnings for deprecated functions (strtok and stricmp)
@@ -29,13 +29,16 @@ namespace spherical
 	void application::run()
 	{
 		// Create the main window first
-		mainWindow mainWindow(800, 600, m_fullScreen);
+		window mainWindow(800, 600, m_fullScreen);
 
 		MSG message;
 		message.message = ~WM_QUIT;
 		DWORD dwNextDeadLine = GetTickCount() + FRAME_TIME;
 		DWORD dwSleep = FRAME_TIME;
 		bool bUpdate = false;
+
+		// initialize the window
+		mainWindow.loadObjects();
 
 		// Loop until a WM_QUIT message is received
 		while (message.message != WM_QUIT) {

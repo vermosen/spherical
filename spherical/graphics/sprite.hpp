@@ -1,18 +1,18 @@
 #pragma once
-#ifndef GRAPHICS_SPRITES_HPP
-#define GRAPHICS_SPRITES_HPP
+#ifndef GRAPHICS_SPRITE_HPP
+#define GRAPHICS_SPRITE_HPP
 
 namespace spherical {
 namespace graphics {
+
 	class sprite
 	{
 	public:
 		sprite();
 		virtual ~sprite();
-
-		virtual draw = 0;
+		void draw();
+		virtual void draw_impl() = 0;
 	};
 }}
 
 #endif
-

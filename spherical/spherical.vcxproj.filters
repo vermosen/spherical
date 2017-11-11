@@ -5,13 +5,17 @@
     <ClCompile Include="application\application.cpp" />
     <ClCompile Include="application\window.cpp" />
     <ClCompile Include="graphics\sprites\square.cpp" />
+    <ClCompile Include="graphics\sprite.cpp" />
+    <ClCompile Include="graphics\sprites\triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application\application.hpp" />
     <ClInclude Include="application\exception.hpp" />
-    <ClInclude Include="graphics\sprite.hpp" />
     <ClInclude Include="application\window.hpp" />
     <ClInclude Include="graphics\sprites\square.hpp" />
+    <ClInclude Include="graphics\sprite.hpp" />
+    <ClInclude Include="graphics\sprites\triangle.hpp" />
+    <ClInclude Include="graphics\sprites\all.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="application">

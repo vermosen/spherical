@@ -1,7 +1,10 @@
-#include "window.hpp"
-#include "exception.hpp"
+#include <application/window.hpp>
+#include <application/exception.hpp>
 
-#define WINDOW_CLASSNAME    "Tutorial1"  // Window class name
+#include <graphics/sprite.hpp>
+#include <graphics/sprites/all.hpp>
+
+#define WINDOW_CLASSNAME "spherical"  // Window class name
 
 namespace spherical
 {
@@ -77,22 +80,18 @@ namespace spherical
 	window::~window () {
 
 		if (m_bFullScreen) {
-
 			// Remove the full screen setting
 			ChangeDisplaySettings(NULL, 0);
 			ShowCursor(TRUE);
-
 		}
 
 		if (m_hGLContext) {
-
 			// Make the rendering context not current
 			wglMakeCurrent(NULL, NULL);
 
 			// Delete the OpenGL rendering context
 			wglDeleteContext(m_hGLContext);
 			m_hGLContext = NULL;
-
 		}
 
 		if (m_hDeviceContext) {
@@ -244,7 +243,13 @@ namespace spherical
 		glOrtho(0.0, width, height, 0.0, -1.0, 1.0);
 		glMatrixMode(GL_MODELVIEW);
 	}
-	
+
+	void window::loadObjects()
+	{
+		m_sprites.emplace_back(new graphics::square());
+		m_sprites.emplace_back(new graphics::triangle());
+	}
+
 	void window::update(DWORD dwCurrentTime) {}
 
 	void window::draw()
@@ -252,24 +257,10 @@ namespace spherical
 		// Clear the buffer
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// Here goes the drawing code
-		glBegin(GL_QUADS);
-
-		glColor3f(1.0, 1.0, 0.0);		glVertex3i(50, 200, 0);
-		glColor3f(0.0, 1.0, 0.0);		glVertex3i(250, 200, 0);
-		glColor3f(0.0, 0.0, 1.0);		glVertex3i(250, 350, 0);
-		glColor3f(1.0, 1.0, 1.0);		glVertex3i(50, 350, 0);
-
-		glEnd();
-
-		// creates a triangle
-		glBegin(GL_TRIANGLES);
-
-		glColor3f(1.0, 0.0, 0.0);  glVertex3i(400, 350, 0);
-		glColor3f(0.0, 1.0, 0.0);  glVertex3i(500, 200, 0);
-		glColor3f(0.0, 0.0, 1.0);  glVertex3i(600, 350, 0);
-
-		glEnd();
+		for (auto& it : m_sprites)
+		{
+			it->draw();
+		}
 
 		for (int i = 0; i < 20; i++) 
 		{
